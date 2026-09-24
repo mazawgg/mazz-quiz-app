@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Master</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Animasi -->
+    <div class="bg-animated">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Top Navigation (Settings) -->
+    <nav class="top-nav">
+        <button id="btn-settings" class="icon-btn" aria-label="Settings"><i class="fas fa-cog"></i></button>
+    </nav>
+
+    <main class="app-container">
+        
+        <!-- 1. LANDING SCREEN -->
+        <section id="screen-landing" class="screen active">
+            <div class="glass-card text-center">
+                <div class="logo-bounce">🧠</div>
+                <h1>Mazz Quiz Master</h1>
+                <p class="subtitle">Challenge your knowledge. Have fun. Learn something new!</p>
+                
+                <h3 id="welcome-text"></h3>
+                
+                <div class="input-group">
+                    <input type="text" id="player-name" placeholder="Enter your name..." autocomplete="off">
+                </div>
+
+                <div class="config-section">
+                    <p class="config-title">Select Category</p>
+                    <div class="chip-group" id="category-group">
+                        <button class="chip active" data-val="All"><i class="fa-solid fa-dice"></i> &nbsp;&nbsp;Random</button>
+                        <button class="chip" data-val="HTML"><i class="fa-brands fa-html5"></i> &nbsp;&nbsp;HTML</button>
+                        <button class="chip" data-val="CSS"><i class="fa-brands fa-css3-alt"></i> &nbsp;&nbsp;CSS</button>
+                        <button class="chip" data-val="JavaScript"><i class="fa-brands fa-js"></i> &nbsp;&nbsp;JavaScript</button>
+                        <button class="chip" data-val="Programming"><i class="fa-solid fa-laptop-code"></i> &nbsp;&nbsp;Programming</button>
+                    </div>
+
+                    <p class="config-title">Difficulty</p>
+                    <div class="chip-group" id="difficulty-group">
+                        <button class="chip active" data-val="All"><i class="fa-solid fa-globe"></i> &nbsp;&nbsp;All</button>
+                        <button class="chip" data-val="easy"><i class="fa-solid fa-circle" style="color: lightgreen"></i> &nbsp;&nbsp;Easy</button>
+                        <button class="chip" data-val="medium"><i class="fa-solid fa-circle" style="color: rgb(231, 214, 23)"></i> &nbsp;&nbsp;Medium</button>
+                        <button class="chip" data-val="hard"><i class="fa-solid fa-circle" style="color: red"></i> &nbsp;&nbsp;Hard</button>
+                    </div>
+
+                    <p class="config-title">Number of Questions</p>
+                    <div class="chip-group" id="amount-group">
+                        <button class="chip" data-val="5">5</button>
+                        <button class="chip active" data-val="10">10</button>
+                        <button class="chip" data-val="15">15</button>
+                    </div>
+                </div>
+
+                <button id="btn-start" class="primary-btn pulse-hover">Start Quiz &nbsp;&nbsp;🚀</button>
+            </div>
+            
+            <!-- Local Leaderboard Preview -->
+            <div class="glass-card mt-4" id="leaderboard-preview">
+                <h3>🏆 Local Top Player</h3>
+                <div id="lb-content"></div>
+            </div>
+        </section>
+
+        <!-- 2. QUIZ SCREEN -->
+        <section id="screen-quiz" class="screen hidden">
+            <div class="quiz-header">
+                <div class="stats-top">
+                    <span class="score-badge">⭐ Score: <span id="score-el">0</span></span>
+                    <span class="streak-badge">🔥 Streak: <span id="streak-el">0</span></span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-text">Question <span id="q-current">1</span> / <span id="q-total">10</span></div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="timer-container" id="timer-wrapper">
+                    <i class="fas fa-stopwatch"></i> <span id="timer-el">15s</span>
+                </div>
+            </div>
+
+            <div class="glass-card question-card" id="question-card">
+                <div class="q-meta">
+                    <span id="q-category" class="tag">HTML</span>
+                    <span id="q-difficulty" class="tag">Easy</span>
+                    <button id="btn-pause" class="icon-btn small"><i class="fas fa-pause"></i></button>
+                </div>
+                <h2 id="question-text">Loading question...</h2>
+                <div class="options-grid" id="options-container">
+                    <!-- Options injected here -->
+                </div>
+                <div class="feedback-box hidden" id="feedback-box">
+                    <h3 id="feedback-title"></h3>
+                    <p id="feedback-desc"></p>
+                    <button id="btn-next" class="primary-btn mt-2">Next Question <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <p class="hint-text">Tip: Use 1-4 keys to answer faster</p>
+        </section>
+
+        <!-- 3. RESULT SCREEN -->
+        <section id="screen-result" class="screen hidden">
+            <div class="glass-card text-center">
+                <h1 id="result-greeting">Quiz Complete! 🎉</h1>
+                <p id="result-message" class="subtitle"></p>
+                
+                <div class="score-circle">
+                    <div class="score-inner">
+                        <h2 id="final-percentage">0%</h2>
+                        <p>Score</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <i class="fas fa-star text-warning"></i>
+                        <p>Points</p>
+                        <h4 id="stat-points">0</h4>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-check text-success"></i>
+                        <p>Correct</p>
+                        <h4 id="stat-correct">0</h4>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-times text-danger"></i>
+                        <p>Wrong</p>
+                        <h4 id="stat-wrong">0</h4>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-fire text-primary"></i>
+                        <p>Best Streak</p>
+                        <h4 id="stat-streak">0</h4>
+                    </div>
+                </div>
+
+                <div class="action-buttons mt-4">
+                    <button id="btn-review" class="secondary-btn"><i class="fas fa-list"></i> Review Answers</button>
+                    <button id="btn-home" class="primary-btn"><i class="fas fa-home"></i> Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. REVIEW SCREEN -->
+        <section id="screen-review" class="screen hidden">
+            <div class="glass-card">
+                <div class="flex-between">
+                    <h2>Review Answers</h2>
+                    <button id="btn-close-review" class="icon-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="review-list" id="review-list-container">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modals & Overlays -->
+    <div id="modal-settings" class="modal hidden">
+        <div class="modal-content glass-card">
+            <h2><i class="fas fa-cog"></i>&nbsp;&nbsp;Settings</h2>
+            <div class="setting-item">
+                <span><i class="fas fa-volume-up"></i>&nbsp;&nbsp;Sound Effects</span>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-sound" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span><i class="fas fa-moon"></i>&nbsp;&nbsp;&nbsp;&nbsp;Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-theme">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span><i class="fas fa-stopwatch"></i>&nbsp;&nbsp;&nbsp;Timer</span>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-timer" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <button class="primary-btn mt-4 w-100" id="btn-close-settings">Save & Close</button>
+        </div>
+    </div>
+
+    <div id="modal-pause" class="modal hidden">
+        <div class="modal-content glass-card text-center">
+            <h2>Quiz Paused &nbsp;&nbsp;<i class="fas fa-pause"></i></h2>
+            <p>Take a deep breath.</p>
+            <div class="action-buttons mt-4">
+                <button id="btn-resume" class="primary-btn w-100"><i class="fas fa-play"></i> Resume Quiz</button>
+                <button id="btn-quit" class="danger-btn w-100 mt-2"><i class="fas fa-sign-out-alt"></i> Quit Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
