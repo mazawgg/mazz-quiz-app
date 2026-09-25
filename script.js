@@ -10,43 +10,122 @@
  * 7. Utilities (Audio, Confetti, Storage, Toast)
  */
 
-// --- 1. DATA SOAL ---
+// --- 1. DATA SOAL (Lengkap: 15 Soal per Kategori + 15 Soal Mix) ---
 const questionBank = [
-    // HTML
+    // ==========================================
+    // 🌐 KATEGORI: HTML (Total 15 Soal)
+    // ==========================================
+    // -- Easy (5 Soal) --
     { cat: "HTML", diff: "easy", q: "Apa kepanjangan HTML?", opts: ["Hyper Text Markup Language", "High Text Machine Language", "Hyperlinks Text Mark Language", "Home Tool Markup Language"], ans: 0, exp: "HTML adalah standar bahasa markah untuk web." },
     { cat: "HTML", diff: "easy", q: "Tag untuk membuat paragraf adalah?", opts: ["<text>", "<p>", "<para>", "<pg>"], ans: 1, exp: "<p> merepresentasikan sebuah paragraf." },
+    { cat: "HTML", diff: "easy", q: "Tag apa yang digunakan untuk membuat judul (heading) paling besar?", opts: ["<h6>", "<head>", "<h1>", "<heading>"], ans: 2, exp: "<h1> merepresentasikan heading tingkat tertinggi." },
+    { cat: "HTML", diff: "easy", q: "Tag apa yang digunakan untuk membuat garis horizontal (divider)?", opts: ["<line>", "<hr>", "<br>", "<divider>"], ans: 1, exp: "<hr> singkatan dari Horizontal Rule." },
+    { cat: "HTML", diff: "easy", q: "Tag apa yang digunakan untuk membuat teks menjadi tebal (bold)?", opts: ["<bold>", "<strong>", "<b-text>", "<thick>"], ans: 1, exp: "<strong> atau <b> digunakan untuk menebalkan teks." },
+
+    // -- Medium (5 Soal) --
     { cat: "HTML", diff: "medium", q: "Atribut mana yang digunakan untuk link tujuan di tag <a>?", opts: ["src", "link", "href", "url"], ans: 2, exp: "href (Hypertext Reference) menentukan URL tujuan." },
-    { cat: "HTML", diff: "medium", q: "Bagaimana cara membuat list bernomor?", opts: ["<ul>", "<list>", "<dl>", "<ol>"], ans: 3, exp: "<ol> singkatan dari Ordered List (bernomor)." },
+    { cat: "HTML", diff: "medium", q: "Bagaimana cara membuat list bernomor?", opts: ["<ul>", "<list>", "<dl>", "<ol>"], ans: 3, exp: "<ol> singkatan dari Ordered List." },
+    { cat: "HTML", diff: "medium", q: "Tag untuk menyisipkan gambar adalah?", opts: ["<image>", "<img>", "<pic>", "<src>"], ans: 1, exp: "<img> adalah tag kosong yang memerlukan atribut src." },
+    { cat: "HTML", diff: "medium", q: "Elemen HTML apa yang digunakan untuk membuat baris tabel?", opts: ["<td>", "<tr>", "<th>", "<table-row>"], ans: 1, exp: "<tr> singkatan dari Table Row." },
+    { cat: "HTML", diff: "medium", q: "Atribut apa yang digunakan untuk memberikan teks alternatif pada gambar?", opts: ["title", "alt", "longdesc", "caption"], ans: 1, exp: "Atribut alt menampilkan deskripsi jika gambar gagal dimuat." },
+
+    // -- Hard (5 Soal) --
     { cat: "HTML", diff: "hard", q: "Tag semantik HTML5 mana yang tepat untuk artikel independen?", opts: ["<section>", "<div>", "<article>", "<aside>"], ans: 2, exp: "<article> digunakan untuk konten mandiri dan independen." },
-    // CSS
+    { cat: "HTML", diff: "hard", q: "Atribut mana yang membuat input field wajib diisi?", opts: ["validate", "required", "mandatory", "must-fill"], ans: 1, exp: "Atribut 'required' pada tag <input>." },
+    { cat: "HTML", diff: "hard", q: "Atribut apa yang digunakan untuk menggabungkan beberapa kolom pada tabel?", opts: ["rowspan", "colspan", "mergecol", "combined"], ans: 1, exp: "Colspan mengatur berapa kolom tabel yang digabungkan." },
+    { cat: "HTML", diff: "hard", q: "Tag HTML5 mana yang digunakan untuk menampilkan indikator progres suatu tugas?", opts: ["<progress>", "<meter>", "<gauge>", "<track>"], ans: 0, exp: "<progress> merepresentasikan kemajuan tugas (progress bar)." },
+    { cat: "HTML", diff: "hard", q: "Atribut jenis apa yang digunakan pada <input> untuk memilih tanggal?", opts: ["type=\"datetime\"", "type=\"date\"", "type=\"calendar\"", "type=\"day\""], ans: 1, exp: "<input type=\"date\"> menghasilkan pemilih tanggal standar browser." },
+
+    // ==========================================
+    // 🎨 KATEGORI: CSS (Total 15 Soal)
+    // ==========================================
+    // -- Easy (5 Soal) --
     { cat: "CSS", diff: "easy", q: "Apa kepanjangan CSS?", opts: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style System", "Colorful Style Sheets"], ans: 1, exp: "CSS mengatur tampilan elemen HTML." },
     { cat: "CSS", diff: "easy", q: "Properti untuk mengubah warna teks adalah?", opts: ["color", "text-color", "font-color", "bg-color"], ans: 0, exp: "Properti 'color' mengubah warna font/teks." },
+    { cat: "CSS", diff: "easy", q: "Properti CSS untuk mengubah jenis font adalah?", opts: ["font-style", "font-family", "text-style", "typeface"], ans: 1, exp: "font-family mendefinisikan keluarga font yang digunakan." },
+    { cat: "CSS", diff: "easy", q: "Properti CSS untuk mengatur ukuran huruf (font) adalah?", opts: ["text-size", "font-size", "size", "text-style"], ans: 1, exp: "font-size digunakan untuk mengatur besar kecilnya huruf." },
+    { cat: "CSS", diff: "easy", q: "Bagaimana cara menulis komentar di dalam CSS?", opts: ["// Komentar", "<!-- Komentar -->", "/* Komentar */", "# Komentar"], ans: 2, exp: "Komentar CSS ditulis di antara /* dan */." },
+
+    // -- Medium (5 Soal) --
     { cat: "CSS", diff: "medium", q: "Bagaimana cara memanggil ID 'header' di CSS?", opts: [".header", "*header", "#header", "header"], ans: 2, exp: "Simbol # digunakan untuk selector ID." },
-    { cat: "CSS", diff: "medium", q: "Nilai z-index default adalah?", opts: ["1", "0", "auto", "-1"], ans: 2, exp: "Default z-index adalah 'auto' (seperti 0)." },
+    { cat: "CSS", diff: "medium", q: "Properti flexbox untuk mengatur jarak di sumbu utama?", opts: ["align-items", "justify-content", "flex-direction", "gap"], ans: 1, exp: "justify-content mengatur alignment secara horizontal (default)." },
+    { cat: "CSS", diff: "medium", q: "Bagaimana cara memilih semua elemen <p> di dalam container dengan class 'box'?", opts: [".box p", "p .box", ".box > p", "box.p"], ans: 0, exp: "Descendant selector (.box p) memilih semua elemen p di dalam box." },
+    { cat: "CSS", diff: "medium", q: "Properti CSS mana yang digunakan untuk membuat sudut elemen melengkung?", opts: ["border-radius", "corner-round", "radius-style", "curve-edge"], ans: 0, exp: "border-radius membuat sudut elemen melengkung." },
+    { cat: "CSS", diff: "medium", q: "Nilai properti display apa yang digunakan untuk membuat layout Flexbox?", opts: ["block", "grid", "flex", "inline-flexbox"], ans: 2, exp: "display: flex mengaktifkan kontainer flexbox." },
+
+    // -- Hard (5 Soal) --
+    { cat: "CSS", diff: "hard", q: "Nilai z-index default adalah?", opts: ["1", "0", "auto", "-1"], ans: 2, exp: "Default z-index adalah 'auto' (setara dengan 0)." },
     { cat: "CSS", diff: "hard", q: "Manakah yang BUKAN nilai dari properti position?", opts: ["static", "relative", "absolute", "float"], ans: 3, exp: "Float adalah properti terpisah, bukan nilai dari position." },
-    // JS
+    { cat: "CSS", diff: "hard", q: "Unit vh merujuk pada?", opts: ["Visual height", "Viewport height", "Vertical height", "View heading"], ans: 1, exp: "1vh = 1% dari tinggi viewport layar." },
+    { cat: "CSS", diff: "hard", q: "Fungsi CSS apa yang digunakan untuk membuat efek buram (blur) pada background?", opts: ["opacity()", "blur()", "backdrop-filter: blur()", "filter-blur()"], ans: 2, exp: "backdrop-filter dengan nilai blur() mengenakan efek blur ke elemen di belakangnya." },
+    { cat: "CSS", diff: "hard", q: "Pseudo-class CSS mana yang menargetkan elemen ketika sedang diklik/ditekan?", opts: [":hover", ":focus", ":active", ":visited"], ans: 2, exp: ":active mewakili keadaan saat elemen diaktifkan (misal diklik)." },
+
+    // ==========================================
+    // ⚡ KATEGORI: JavaScript (Total 15 Soal)
+    // ==========================================
+    // -- Easy (5 Soal) --
     { cat: "JavaScript", diff: "easy", q: "Simbol untuk komentar satu baris di JS?", opts: ["<!-- -->", "//", "/* */", "#"], ans: 1, exp: "// digunakan untuk komentar sebaris." },
     { cat: "JavaScript", diff: "easy", q: "Deklarasi variabel yang nilainya bisa diubah?", opts: ["const", "let", "static", "final"], ans: 1, exp: "let mengizinkan reassignment, const tidak." },
+    { cat: "JavaScript", diff: "easy", q: "Operator perbandingan identik (tipe & nilai) di JS?", opts: ["==", "=", "===", "!="], ans: 2, exp: "=== mengecek kesamaan nilai sekaligus tipe datanya." },
+    { cat: "JavaScript", diff: "easy", q: "Method apa yang digunakan untuk mencetak sesuatu ke console browser?", opts: ["print()", "console.log()", "debug.print()", "echo()"], ans: 1, exp: "console.log() mencetak pesan ke konsol." },
+    { cat: "JavaScript", diff: "easy", q: "Bagaimana cara menulis fungsi (function) standar di JS?", opts: ["function myFunc()", "def myFunc()", "create function myFunc()", "fun myFunc()"], ans: 0, exp: "Fungsi di JS dideklarasikan dengan keyword 'function'." },
+
+    // -- Medium (5 Soal) --
     { cat: "JavaScript", diff: "medium", q: "Metode array untuk menambah item ke akhir array?", opts: ["push()", "pop()", "shift()", "add()"], ans: 0, exp: "push() menambah elemen ke index terakhir." },
     { cat: "JavaScript", diff: "medium", q: "Tipe data dari (typeof null) adalah?", opts: ["null", "undefined", "object", "string"], ans: 2, exp: "Bug legendaris di JS: typeof null mereturn 'object'." },
+    { cat: "JavaScript", diff: "medium", q: "Method untuk mengkonversi string ke integer?", opts: ["parseString()", "toInteger()", "parseInt()", "Math.int()"], ans: 2, exp: "parseInt() memparsing string dan mereturn integer." },
+    { cat: "JavaScript", diff: "medium", q: "Method array untuk menghapus elemen terakhir dari array?", opts: ["pop()", "push()", "shift()", "slice()"], ans: 0, exp: "pop() mengeluarkan elemen terakhir dari array." },
+    { cat: "JavaScript", diff: "medium", q: "Method string apa yang digunakan untuk mengubah huruf menjadi kapital semua?", opts: ["toUppercase()", "toUpperCase()", "capsLock()", "upperText()"], ans: 1, exp: "toUpperCase() mengubah seluruh string menjadi huruf kapital." },
+
+    // -- Hard (5 Soal) --
     { cat: "JavaScript", diff: "hard", q: "Apa output dari '2' + 2 di JS?", opts: ["4", "22", "NaN", "Error"], ans: 1, exp: "Tipe number akan diconvert ke string dan digabungkan (concatenation)." },
-    // Programming
+    { cat: "JavaScript", diff: "hard", q: "Apa itu DOM?", opts: ["Data Object Model", "Document Object Model", "Direct Object Mapping", "Display Output Monitor"], ans: 1, exp: "DOM adalah interface programming untuk dokumen HTML." },
+    { cat: "JavaScript", diff: "hard", q: "Manakah yang merupakan cara membuat Promise di JS?", opts: ["new Promise((resolve, reject) => {})", "Promise.create()", "fetch.Promise()", "Async.create()"], ans: 0, exp: "Promise dibuat menggunakan constructor 'new Promise'." },
+    { cat: "JavaScript", diff: "hard", q: "Apa hasil dari operasi 3 + 2 + '7' di JavaScript?", opts: ["327", "57", "12", "NaN"], ans: 1, exp: "3+2 dijumlahkan jadi 5, lalu digabung string '7' menjadi '57'." },
+    { cat: "JavaScript", diff: "hard", q: "Metode apa yang digunakan untuk mengeksekusi array callback pada setiap elemen dan menghasilkan array baru?", opts: ["forEach()", "map()", "filter()", "reduce()"], ans: 1, exp: "map() membuat array baru dari hasil pemanggilan fungsi pada tiap elemen." },
+
+    // ==========================================
+    // 💻 KATEGORI: Programming (Total 15 Soal)
+    // ==========================================
+    // -- Easy (5 Soal) --
     { cat: "Programming", diff: "easy", q: "Otak dari sebuah komputer disebut?", opts: ["RAM", "Motherboard", "CPU", "GPU"], ans: 2, exp: "CPU (Central Processing Unit) adalah otak komputer." },
     { cat: "Programming", diff: "easy", q: "Sistem bilangan berbasis 2 (0 dan 1) disebut?", opts: ["Desimal", "Hexadesimal", "Biner", "Oktal"], ans: 2, exp: "Sistem biner adalah bahasa paling dasar komputer." },
+    { cat: "Programming", diff: "easy", q: "Proses mencari dan memperbaiki error pada kode disebut?", opts: ["Compiling", "Debugging", "Running", "Executing"], ans: 1, exp: "Debugging berasal dari kata 'bug' (kutu/error)." },
+    { cat: "Programming", diff: "easy", q: "Perangkat lunak apa yang digunakan untuk menjelajahi internet?", opts: ["Compiler", "Browser", "Editor Teks", "Database"], ans: 1, exp: "Web browser digunakan untuk mengakses website." },
+    { cat: "Programming", diff: "easy", q: "Ekstensi file apa yang biasa digunakan untuk file kode program JavaScript?", opts: [".java", ".py", ".js", ".html"], ans: 2, exp: ".js adalah ekstensi standar untuk file script JavaScript." },
+
+    // -- Medium (5 Soal) --
     { cat: "Programming", diff: "medium", q: "Struktur data LIFO (Last In First Out)?", opts: ["Queue", "Array", "Tree", "Stack"], ans: 3, exp: "Stack beroperasi seperti tumpukan piring (LIFO)." },
     { cat: "Programming", diff: "medium", q: "Apa kepanjangan dari API?", opts: ["Application Programming Interface", "Advanced Program Integration", "Automated Process Interface", "Apple Programming Interface"], ans: 0, exp: "API menjembatani komunikasi antar software." },
-    { cat: "Programming", diff: "hard", q: "Konsep OOP dimana class anak mewarisi class induk disebut?", opts: ["Polymorphism", "Encapsulation", "Inheritance", "Abstraction"], ans: 2, exp: "Inheritance (Pewarisan) mengizinkan reuse kode." },
-    // Additional Mix
-    { cat: "HTML", diff: "hard", q: "Atribut mana yang membuat input field wajib diisi?", opts: ["validate", "required", "mandatory", "must-fill"], ans: 1, exp: "Atribut 'required' pada tag <input>." },
-    { cat: "CSS", diff: "medium", q: "Properti flexbox untuk mengatur jarak di sumbu utama?", opts: ["align-items", "justify-content", "flex-direction", "gap"], ans: 1, exp: "justify-content mengatur alignment secara horizontal (default)." },
-    { cat: "JavaScript", diff: "medium", q: "Method untuk mengkonversi string ke integer?", opts: ["parseString()", "toInteger()", "parseInt()", "Math.int()"], ans: 2, exp: "parseInt() memparsing string dan mereturn integer." },
-    { cat: "Programming", diff: "easy", q: "Proses mencari dan memperbaiki error pada kode disebut?", opts: ["Compiling", "Debugging", "Running", "Executing"], ans: 1, exp: "Debugging berasal dari kata 'bug' (kutu/error)." },
-    { cat: "HTML", diff: "medium", q: "Tag untuk menyisipkan gambar adalah?", opts: ["<image>", "<img>", "<pic>", "<src>"], ans: 1, exp: "<img> adalah tag kosong yang memerlukan atribut src." },
-    { cat: "CSS", diff: "hard", q: "Unit vh merujuk pada?", opts: ["Visual height", "Viewport height", "Vertical height", "View heading"], ans: 1, exp: "1vh = 1% dari tinggi viewport layar." },
-    { cat: "JavaScript", diff: "hard", q: "Apa itu DOM?", opts: ["Data Object Model", "Document Object Model", "Direct Object Mapping", "Display Output Monitor"], ans: 1, exp: "DOM adalah interface programming untuk dokumen HTML." },
     { cat: "Programming", diff: "medium", q: "Perulangan yang mengeksekusi blok minimal 1 kali meskipun kondisi salah?", opts: ["for", "while", "do-while", "foreach"], ans: 2, exp: "do-while mengeksekusi body dulu sebelum mengecek kondisi." },
-    { cat: "JavaScript", diff: "easy", q: "Operator perbandingan identik (tipe & nilai) di JS?", opts: ["==", "=", "===", "!="], ans: 2, exp: "=== mengecek kesamaan nilai sekaligus tipe datanya." },
-    { cat: "Programming", diff: "hard", q: "Manakah yang merupakan NoSQL Database?", opts: ["MySQL", "PostgreSQL", "MongoDB", "Oracle"], ans: 2, exp: "MongoDB berbasis dokumen (JSON-like), bukan tabel relasional." }
+    { cat: "Programming", diff: "medium", q: "Struktur data FIFO (First In First Out)?", opts: ["Stack", "Queue", "Tree", "Graph"], ans: 1, exp: "Queue (antrean) beroperasi seperti antrean loket (FIFO)." },
+    { cat: "Programming", diff: "medium", q: "Port default yang biasa digunakan oleh server web HTTP adalah?", opts: ["21", "443", "80", "3306"], ans: 2, exp: "Port 80 digunakan untuk koneksi HTTP standar." },
+
+    // -- Hard (5 Soal) --
+    { cat: "Programming", diff: "hard", q: "Konsep OOP dimana class anak mewarisi class induk disebut?", opts: ["Polymorphism", "Encapsulation", "Inheritance", "Abstraction"], ans: 2, exp: "Inheritance (Pewarisan) mengizinkan reuse kode." },
+    { cat: "Programming", diff: "hard", q: "Manakah yang merupakan NoSQL Database?", opts: ["MySQL", "PostgreSQL", "MongoDB", "Oracle"], ans: 2, exp: "MongoDB berbasis dokumen (JSON-like), bukan tabel relasional." },
+    { cat: "Programming", diff: "hard", q: "Apa nama algoritma pencarian yang membagi data terurut menjadi dua bagian?", opts: ["Linear Search", "Binary Search", "Bubble Search", "Quick Search"], ans: 1, exp: "Binary search bekerja dengan membagi dua area pencarian secara rekursif." },
+    { cat: "Programming", diff: "hard", q: "Apa kepanjangan dari SQL?", opts: ["Simple Query Language", "Structured Query Language", "Server Quality Linux", "System Query Logic"], ans: 1, exp: "SQL adalah bahasa standar untuk mengelola basis data relasional." },
+    { cat: "Programming", diff: "hard", q: "Apa nama protokol aman yang mengenkripsi lalu lintas web dengan SSL/TLS?", opts: ["HTTP", "FTP", "HTTPS", "TCP"], ans: 2, exp: "HTTPS menjamin keamanan dan enkripsi data antara browser dan server." },
+
+    // ==========================================
+    // 🎲 KATEGORI: MIX (Total 15 Soal - Campuran Berbagai Level & Topik)
+    // ==========================================
+    { cat: "Mix", diff: "easy", q: "Apa kepanjangan HTML?", opts: ["Hyper Text Markup Language", "High Text Machine Language", "Hyperlinks Text Mark Language", "Home Tool Markup Language"], ans: 0, exp: "HTML adalah standar bahasa markah untuk web." },
+    { cat: "Mix", diff: "medium", q: "Atribut mana yang digunakan untuk link tujuan di tag <a>?", opts: ["src", "link", "href", "url"], ans: 2, exp: "href (Hypertext Reference) menentukan URL tujuan." },
+    { cat: "Mix", diff: "hard", q: "Tag semantik HTML5 mana yang tepat untuk artikel independen?", opts: ["<section>", "<div>", "<article>", "<aside>"], ans: 2, exp: "<article> digunakan untuk konten mandiri dan independen." },
+    { cat: "Mix", diff: "easy", q: "Apa kepanjangan CSS?", opts: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style System", "Colorful Style Sheets"], ans: 1, exp: "CSS mengatur tampilan elemen HTML." },
+    { cat: "Mix", diff: "medium", q: "Bagaimana cara memanggil ID 'header' di CSS?", opts: [".header", "*header", "#header", "header"], ans: 2, exp: "Simbol # digunakan untuk selector ID." },
+    { cat: "Mix", diff: "hard", q: "Manakah yang BUKAN nilai dari properti position?", opts: ["static", "relative", "absolute", "float"], ans: 3, exp: "Float adalah properti terpisah, bukan nilai dari position." },
+    { cat: "Mix", diff: "easy", q: "Simbol untuk komentar satu baris di JS?", opts: ["<!-- -->", "//", "/* */", "#"], ans: 1, exp: "// digunakan untuk komentar sebaris." },
+    { cat: "Mix", diff: "medium", q: "Metode array untuk menambah item ke akhir array?", opts: ["push()", "pop()", "shift()", "add()"], ans: 0, exp: "push() menambah elemen ke index terakhir." },
+    { cat: "Mix", diff: "hard", q: "Apa output dari '2' + 2 di JS?", opts: ["4", "22", "NaN", "Error"], ans: 1, exp: "Tipe number diconvert ke string dan digabungkan (concatenation)." },
+    { cat: "Mix", diff: "easy", q: "Otak dari sebuah komputer disebut?", opts: ["RAM", "Motherboard", "CPU", "GPU"], ans: 2, exp: "CPU (Central Processing Unit) adalah otak komputer." },
+    { cat: "Mix", diff: "medium", q: "Struktur data LIFO (Last In First Out)?", opts: ["Queue", "Array", "Tree", "Stack"], ans: 3, exp: "Stack beroperasi seperti tumpukan piring (LIFO)." },
+    { cat: "Mix", diff: "hard", q: "Konsep OOP dimana class anak mewarisi class induk disebut?", opts: ["Polymorphism", "Encapsulation", "Inheritance", "Abstraction"], ans: 2, exp: "Inheritance (Pewarisan) mengizinkan reuse kode." },
+    { cat: "Mix", diff: "easy", q: "Apa fungsi utama dari perintah 'git commit'?", opts: ["Mengunduh repo dari GitHub", "Menyimpan perubahan kode secara lokal", "Mengirim kode ke server", "Menghapus riwayat kode"], ans: 1, exp: "Git commit merekam/menyimpan snapshot perubahan file ke repository lokal." },
+    { cat: "Mix", diff: "medium", q: "Manakah yang merupakan protokol untuk mengirim email?", opts: ["FTP", "SMTP", "HTTP", "SSH"], ans: 1, exp: "SMTP (Simple Mail Transfer Protocol) digunakan untuk pengiriman email." },
+    { cat: "Mix", diff: "hard", q: "Apa nama algoritma pencarian yang membagi data terurut menjadi dua bagian?", opts: ["Linear Search", "Binary Search", "Bubble Search", "Quick Search"], ans: 1, exp: "Binary search bekerja dengan membagi dua area pencarian secara rekursif." }
 ];
 
 // --- 2. STATE & VARIABLES ---
@@ -304,14 +383,15 @@ function handleAnswer(btnTarget, isCorrect, userText, qObj) {
         state.wrong++;
         state.streak = 0;
 
-        // Highlight correct
+        // Highlight correct (PERBAIKAN AGAR TIDAK ERROR)
         btns.forEach(b => {
-            if (b.querySelector('.opt-text').innerText === qObj.opts[qObj.ans]) {
+            let optTextSpan = b.querySelector('.opt-text');
+            if (optTextSpan && optTextSpan.textContent === qObj.opts[qObj.ans]) {
                 b.classList.add('correct');
                 b.style.opacity = '0.7';
             }
         });
-
+        
         dom.feedTitle.innerHTML = `❌ Not quite!`;
     }
 
